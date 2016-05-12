@@ -3,13 +3,22 @@ var test = require('tap').test
 var sortActions = require('../../lib/install/diff-trees.js').sortActions
 
 var a = {
-  package: {_location: '/a', _requiredBy: []}
+  location: '/a',
+  package: {},
+  requiredBy: [],
+  requires: [c]
 }
 var b = {
-  package: {_location: '/b', _requiredBy: []}
+  location: '/b',
+  package: {},
+  requiredBy: [],
+  requires: [c]
 }
 var c = {
-  package: {_location: '/c', _requiredBy: ['/a', '/b']}
+  location: '/c',
+  package: {},
+  requiredBy: [a, b],
+  requires: []
 }
 
 test('install-order when installing deps', function (t) {
